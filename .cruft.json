@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/woltapp/wolt-python-package-cookiecutter",
+  "commit": "4eecc9c4d27e3c9321438bc1fdaf717bec5eadf6",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "Bricks Mental",
+      "author_email": "bricks.mental@gmail.com",
+      "github_username": "BricksMental",
+      "project_name": "Xirr Grid",
+      "project_slug": "xirr-grid",
+      "package_name": "xirr_grid",
+      "project_short_description": "A Twitch overlay for displaying a grid allowing to highlight cells using chat commands",
+      "_template": "https://github.com/woltapp/wolt-python-package-cookiecutter"
+    }
+  },
+  "directory": null
+}
