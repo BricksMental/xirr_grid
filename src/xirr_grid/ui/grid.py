@@ -1,8 +1,15 @@
 import random
+from enum import Enum
 
-from PySide6.QtWidgets import QGraphicsScene, QGraphicsView, QGraphicsRectItem
+from PySide6.QtWidgets import QGraphicsScene, QGraphicsView, QGraphicsRectItem, QGraphicsSimpleTextItem, QGraphicsTextItem
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QBrush, QPen
+
+
+class CellLabelType(Enum):
+    NONE = None
+    ALL = 'ALL'
+    HEADERS = 'HEADERS'
 
 
 class XirrGrid(QGraphicsView):
@@ -23,13 +30,9 @@ class XirrGrid(QGraphicsView):
 
     def draw_rect(self, column, row):
         # Define the pen (line)
-        pen = QPen(Qt.white)
-        pen.setWidth(2)
+
 
         rect = XirrGridCell(0, 0, self.rect_width, self.rect_height, column, row)
-
-        rect.setPen(pen)
-
 
         # Set the origin (position) of the rectangle in the scene.
         # Set the origin (position) of the rectangle in the scene.
@@ -41,11 +44,17 @@ class XirrGrid(QGraphicsView):
 
 
 class XirrGridCell(QGraphicsRectItem):
-    def __init__(self, x: float, y: float, w: float, h: float, column: int, row: int, parent=None):
+    def __init__(self, x: float, y: float, w: float, h: float, column: int, row: int, border_color=Qt.white, border_width=2, parent=None):
         super().__init__(x, y, w, h, parent)
         self.column = column
         self.row = row
         self._highlight = False
+        pen = QPen(border_color)
+        pen.setWidth(border_width)
+        self.setPen(pen)
+        self.text_label = QGraphicsSimpleTextItem(parent=self)
+        self.text_label.setBrush(border_color)
+        self.text_label.setText('HUHU')
 
     @property
     def highlight(self):
