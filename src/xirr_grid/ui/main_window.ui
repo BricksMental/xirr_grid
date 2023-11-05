@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Xirr Grid</string>
+   <string>XirrGrid Manager</string>
   </property>
   <widget class="QWidget" name="main_widget">
    <property name="statusTip">

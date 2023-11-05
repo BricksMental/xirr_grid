@@ -159,7 +159,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Xirr Grid", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"XirrGrid Manager", None))
 #if QT_CONFIG(statustip)
         self.main_widget.setStatusTip(QCoreApplication.translate("MainWindow", u"WTF", None))
 #endif // QT_CONFIG(statustip)
@@ -173,6 +173,6 @@ class Ui_MainWindow(object):
         self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"no labels", None))
         self.background_color_button.setText(QCoreApplication.translate("MainWindow", u"background color", None))
         self.highlight_color_button.setText(QCoreApplication.translate("MainWindow", u"highlight color", None))
-        self.show_grid_button.setText(QCoreApplication.translate("MainWindow", u"show grid", None))
+        self.show_grid_button.setText(QCoreApplication.translate("MainWindow", u"WTF", None))
     # retranslateUi
 

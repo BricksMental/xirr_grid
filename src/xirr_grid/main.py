@@ -9,7 +9,6 @@ def main():
     app = QApplication(sys.argv)
     window = MainWindow()
     # window.setWindowFlags(Qt.FramelessWindowHint)
-    print(type(window))
     window.show()
     sys.exit(app.exec())
 
