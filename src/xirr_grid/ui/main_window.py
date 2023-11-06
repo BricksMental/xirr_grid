@@ -16,9 +16,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         height = self.height_spin_box.value()
         #self.grid_view.setMaximumSize(width, height)
         #self.grid_view.setMinimumSize(width, height)
-        self.grid = XirrGrid(0, 0,
-                        width, height,
-                        self.columns_spin_box.value(), self.rows_spin_box.value())
+        self.grid = XirrGrid(0, 0, width, height, self.columns_spin_box.value(), self.rows_spin_box.value())
         self.grid.show()
 
     @Slot()

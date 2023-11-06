@@ -1,9 +1,9 @@
 import random
 from enum import Enum
 
-from PySide6.QtWidgets import QGraphicsScene, QGraphicsView, QGraphicsRectItem, QGraphicsSimpleTextItem, QGraphicsTextItem
+from PySide6.QtWidgets import QGraphicsScene, QGraphicsView, QGraphicsRectItem, QGraphicsSimpleTextItem
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QBrush, QPen
+from PySide6.QtGui import QBrush, QPen, QFont
 
 
 class CellLabelType(Enum):
@@ -29,9 +29,6 @@ class XirrGrid(QGraphicsView):
                 self.draw_rect(column, row)
 
     def draw_rect(self, column, row):
-        # Define the pen (line)
-
-
         rect = XirrGridCell(0, 0, self.rect_width, self.rect_height, column, row)
 
         # Set the origin (position) of the rectangle in the scene.
@@ -44,7 +41,7 @@ class XirrGrid(QGraphicsView):
 
 
 class XirrGridCell(QGraphicsRectItem):
-    def __init__(self, x: float, y: float, w: float, h: float, column: int, row: int, border_color=Qt.white, border_width=2, parent=None):
+    def __init__(self, x: float, y: float, w: float, h: float, column: int, row: int, border_color=Qt.black, border_width=2, parent=None):
         super().__init__(x, y, w, h, parent)
         self.column = column
         self.row = row
@@ -54,7 +51,11 @@ class XirrGridCell(QGraphicsRectItem):
         self.setPen(pen)
         self.text_label = QGraphicsSimpleTextItem(parent=self)
         self.text_label.setBrush(border_color)
-        self.text_label.setText('HUHU')
+        self.text_label.setPen(QPen(Qt.white))
+        self.text_label.setText('A0')
+        self.text_label.setPos(2, 2)
+        self.font = QFont('sans', int(h/3))
+        self.text_label.setFont(self.font)
 
     @property
     def highlight(self):
@@ -63,7 +64,6 @@ class XirrGridCell(QGraphicsRectItem):
     @highlight.setter
     def highlight(self, value):
         self._highlight = value
-        print(self.highlight)
         if self._highlight:
             self.setBrush(Qt.red)
         else:
@@ -71,6 +71,4 @@ class XirrGridCell(QGraphicsRectItem):
 
     def mousePressEvent(self, event):
         super().mousePressEvent(event)
-        print(event)
-        print(self.column, self.row)
         self.highlight = not self.highlight

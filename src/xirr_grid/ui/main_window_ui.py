@@ -17,14 +17,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QGroupBox, QLabel,
     QMainWindow, QMenuBar, QPushButton, QRadioButton,
-    QSizePolicy, QSpinBox, QSplitter, QStatusBar,
-    QVBoxLayout, QWidget)
+    QSizePolicy, QSpinBox, QStatusBar, QVBoxLayout,
+    QWidget)
+
+from xirr_grid.ui.buttons import ColorButton
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(295, 255)
+        MainWindow.resize(769, 416)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -89,12 +91,9 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.rows_label, 1, 3, 1, 1)
 
 
-        self.gridLayout_3.addLayout(self.gridLayout, 0, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout, 0, 0, 1, 2)
 
-        self.splitter = QSplitter(self.main_widget)
-        self.splitter.setObjectName(u"splitter")
-        self.splitter.setOrientation(Qt.Horizontal)
-        self.cell_label_group_box = QGroupBox(self.splitter)
+        self.cell_label_group_box = QGroupBox(self.main_widget)
         self.cell_label_group_box.setObjectName(u"cell_label_group_box")
         self.gridLayout_2 = QGridLayout(self.cell_label_group_box)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
@@ -113,25 +112,38 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addWidget(self.radioButton_3, 2, 0, 1, 1)
 
-        self.splitter.addWidget(self.cell_label_group_box)
-        self.layoutWidget = QWidget(self.splitter)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.verticalLayout = QVBoxLayout(self.layoutWidget)
+
+        self.gridLayout_3.addWidget(self.cell_label_group_box, 1, 0, 1, 1)
+
+        self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.background_color_button = QPushButton(self.layoutWidget)
+        self.background_color_button = ColorButton(self.main_widget)
         self.background_color_button.setObjectName(u"background_color_button")
 
         self.verticalLayout.addWidget(self.background_color_button)
 
-        self.highlight_color_button = QPushButton(self.layoutWidget)
+        self.highlight_color_button = ColorButton(self.main_widget)
         self.highlight_color_button.setObjectName(u"highlight_color_button")
 
         self.verticalLayout.addWidget(self.highlight_color_button)
 
-        self.splitter.addWidget(self.layoutWidget)
+        self.grid_color_button = ColorButton(self.main_widget)
+        self.grid_color_button.setObjectName(u"grid_color_button")
 
-        self.gridLayout_3.addWidget(self.splitter, 1, 0, 1, 1)
+        self.verticalLayout.addWidget(self.grid_color_button)
+
+        self.text_color_button = ColorButton(self.main_widget)
+        self.text_color_button.setObjectName(u"text_color_button")
+
+        self.verticalLayout.addWidget(self.text_color_button)
+
+        self.text_outline_color_button = ColorButton(self.main_widget)
+        self.text_outline_color_button.setObjectName(u"text_outline_color_button")
+
+        self.verticalLayout.addWidget(self.text_outline_color_button)
+
+
+        self.gridLayout_3.addLayout(self.verticalLayout, 1, 1, 1, 1)
 
         self.show_grid_button = QPushButton(self.main_widget)
         self.show_grid_button.setObjectName(u"show_grid_button")
@@ -141,7 +153,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.main_widget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 295, 22))
+        self.menubar.setGeometry(QRect(0, 0, 769, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -173,6 +185,9 @@ class Ui_MainWindow(object):
         self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"no labels", None))
         self.background_color_button.setText(QCoreApplication.translate("MainWindow", u"background color", None))
         self.highlight_color_button.setText(QCoreApplication.translate("MainWindow", u"highlight color", None))
-        self.show_grid_button.setText(QCoreApplication.translate("MainWindow", u"WTF", None))
+        self.grid_color_button.setText(QCoreApplication.translate("MainWindow", u"grid color", None))
+        self.text_color_button.setText(QCoreApplication.translate("MainWindow", u"text color", None))
+        self.text_outline_color_button.setText(QCoreApplication.translate("MainWindow", u"text outline color", None))
+        self.show_grid_button.setText(QCoreApplication.translate("MainWindow", u"show grid", None))
     # retranslateUi
 
